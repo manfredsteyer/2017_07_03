@@ -1,7 +1,7 @@
 
 <h1>Flight Search</h1>
 
-<div class="card">
+<div class="row card">
 
     <div class="form-group">
         <label>From</label>
@@ -19,7 +19,15 @@
 
 </div>
 
-
+<div class="row">
+<div *ngFor="let f of flights" class="col col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <flight-card 
+        [item]="f" 
+        [(selected)]="basket[f.id]"></flight-card>
+</div>    
+</div>
+<!--  (selectedChange)="basket[f.id] = $event" -->
+<!--
 <div class="card" *ngIf="flights.length > 0">
     <table class="table table-striped">
         <tr *ngFor="let f of flights" [ngClass]="{ 'active': f == selectedFlight }">
@@ -31,7 +39,7 @@
         </tr>
     </table>
 </div>
-
-<div class="card">
-    <pre>{{ selectedFlight | json }}</pre>
+-->
+<div class="row card">
+    <pre>{{ basket | json }}</pre>
 </div>
