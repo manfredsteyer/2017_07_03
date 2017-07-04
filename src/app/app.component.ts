@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Hallo Welt!!!!';  
+  title = 'Hallo Welt!';  
+
+  toEN(): void {
+    	this.title = 'Hello World!';
+  }
+
+  toDE(): void {
+    	this.title = 'Hallo Welt!';
+  }
+
 }
