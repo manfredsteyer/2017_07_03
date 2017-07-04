@@ -1,30 +1,47 @@
-
-<h1>Flight Search</h1>
+<h1>
+    Flight Search</h1>
 
 <div class="row card">
 
-    <div class="form-group">
-        <label>From</label>
-        <input [(ngModel)]="from" class="form-control">
-    </div>
-    <div class="form-group">
-        <label>To</label>
-        <input [(ngModel)]="to"  class="form-control">
-    </div>
-    <div class="form-group">
-        <button (click)="search()" [disabled]="!from || !to" class="btn btn-default">
+    <form #f="ngForm">
+        <div class="form-group">
+            <label>From</label>
+            <input 
+                [(ngModel)]="from" 
+                name="from" 
+                required
+                minlength="3"
+                maxlength="30"
+                pattern="[a-zA-ZöäüßÖÄÜ]*"
+                class="form-control">
+
+
+            <div *ngIf="!f?.controls['from']?.valid">
+                Validierungsfehler
+                <pre>{{ f.controls['from'].errors | json }}</pre>
+            </div>
+            <div *ngIf="f?.controls['from']?.hasError('required')">Required</div>
+            <div *ngIf="f?.controls['from']?.hasError('minlength')">Minlength</div>
+            <div *ngIf="f?.controls['from']?.hasError('maxlength')">Maxlength</div>
+            <div *ngIf="f?.controls['from']?.hasError('pattern')">Pattern</div>
+
+        </div>
+        <div class="form-group">
+            <label>To</label>
+            <input [(ngModel)]="to" name="to" class="form-control">
+        </div>
+        <div class="form-group">
+            <button (click)="search()" [disabled]="!from || !to" class="btn btn-default">
             Search
         </button>
-    </div>
-
+        </div>
+    </form>
 </div>
 
 <div class="row">
-<div *ngFor="let f of flights" class="col col-xs-12 col-sm-6 col-md-4 col-lg-3">
-    <flight-card 
-        [item]="f" 
-        [(selected)]="basket[f.id]"></flight-card>
-</div>    
+    <div *ngFor="let f of flights" class="col col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <flight-card [item]="f" [(selected)]="basket[f.id]"></flight-card>
+    </div>
 </div>
 <!--  (selectedChange)="basket[f.id] = $event" -->
 <!--
