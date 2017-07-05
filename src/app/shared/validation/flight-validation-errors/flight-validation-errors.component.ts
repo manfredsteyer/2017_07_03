@@ -6,7 +6,6 @@ import { Component, OnInit, Input } from '@angular/core';
     selector: 'flight-validation-errors',
     templateUrl: './flight-validation-errors.component.html'
 })
-
 export class FlightValidationErrorsComponent implements OnInit {
     constructor() { }
 
