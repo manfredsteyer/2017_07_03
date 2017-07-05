@@ -3,6 +3,8 @@ import { CommonModule } from "@angular/common";
 import { CityPipe } from "app/shared/pipes/city.pipe";
 import { FlightValidationErrorsComponent } from "app/shared/validation/flight-validation-errors/flight-validation-errors.component";
 import { CityValidationDirective } from "app/shared/validation/city-validation.directive";
+import { RoundTripValidationDirective } from "app/shared/validation/roundtrip-validation.directive";
+import { AsyncCityValidationDirective } from "app/shared/validation/async-city-validation.directive";
 
 @NgModule({
     imports: [
@@ -11,13 +13,17 @@ import { CityValidationDirective } from "app/shared/validation/city-validation.d
     declarations: [
         CityPipe,
         FlightValidationErrorsComponent,
-        CityValidationDirective
+        CityValidationDirective,
+        RoundTripValidationDirective,
+        AsyncCityValidationDirective
     ],
     providers: [],
     exports: [
         CityPipe,
         FlightValidationErrorsComponent,
-        CityValidationDirective
+        CityValidationDirective,
+        RoundTripValidationDirective,
+        AsyncCityValidationDirective
     ]
 })
 export class SharedModule { }

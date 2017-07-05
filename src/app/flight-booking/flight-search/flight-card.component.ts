@@ -1,6 +1,7 @@
 
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { Flight } from "app/entities/flight";
+import { NgForm } from "@angular/forms";
 
 @Component({
     selector: 'flight-card',
@@ -11,6 +12,8 @@ export class FlightCardComponent implements OnInit, OnChanges {
     constructor() { 
         console.debug('ctor', this.selected, this.item);
     }
+
+
 
     @Input() item: Flight;
     @Input() selected: boolean;
