@@ -59,6 +59,8 @@ export class FlightSearchComponent implements OnInit {
         // this.f.controls['from'].setErrors({ customError: true });
         // if (this.f.controls['from'].value == 'Zürich') return;
 
+        if (!this.from || !this.to) return;
+
         console.debug('form', this.f);
 
         this.flightService
