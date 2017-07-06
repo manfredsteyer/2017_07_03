@@ -10,6 +10,7 @@ import { FlightBookingModule } from "app/flight-booking/flight-booking.module";
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { AppRoutesModule } from "app/app.routes";
+import { BasketComponent } from "app/basket/basket.component";
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AppRoutesModule } from "app/app.routes";
   declarations: [
     AppComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    BasketComponent
 ],
   providers: [
     { provide: BASE_URL, useValue: 'http://www.angular.at/api' }
