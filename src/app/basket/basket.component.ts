@@ -1,22 +1,18 @@
-
-
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Flight } from '../entities/flight';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'basket',
-  template: `
-    <div class="card">
-      <h2>Your Basket</h2>
-      <ul>
-        <li>Hamburg - Graz</li>
-        <li>Hamburg - Mallorca</li>
-        <li>Mallorca - Graz</li>
-      </ul>
-    </div>
-  `
+  templateUrl: './basket.component.html',
+  styleUrls: ['./basket.component.css']
 })
-export class BasketComponent implements OnInit {
-  constructor() { }
+export class BasketComponent {
 
-  ngOnInit() { }
+  constructor(private router: Router) {}
+
+  close() {
+    this.router.navigate([{outlets: {aux: null}}]);
+  }
+
 }

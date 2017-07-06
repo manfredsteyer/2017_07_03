@@ -22,16 +22,29 @@ card h1 {
 
 
 .container {
-    margin-top:200px;
+    margin-top:100px;
 }
 
 .card {
     background-color: white;
     padding: 30px;
+    padding-top:20px;
     border-radius: 5px;
-    margin-top: 20px;
-    margin-right: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
 
+.card ul {
+    margin-top:0px!important;
+}
+
+.card h1{
+  color:black!important;
+  margin-bottom:40px;
+}
+
+.card-contensed {
+  padding: 10px!important;
 }
 
 .col {
@@ -54,4 +67,8 @@ card h1 {
 
 .active {
   color: orange !important;
+}
+
+a {
+    cursor: pointer;
 }

@@ -12,7 +12,7 @@ export class FlightEditResolver implements Resolve<Flight> {
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Flight> {
       let id = route.params['id'];
-      return this.flightService.findById(id).delay(7000);
+      return this.flightService.findById(id).delay(2000);
     }
 
 
