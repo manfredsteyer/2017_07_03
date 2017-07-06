@@ -34,4 +34,4 @@ const APP_ROUTES: Routes = [
 export const AppRoutesModule =
               RouterModule.forRoot(APP_ROUTES, {
                   preloadingStrategy: PreloadAllModules
-              });
+});

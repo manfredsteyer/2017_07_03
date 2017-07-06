@@ -13,6 +13,19 @@ export class FlightService {
         console.debug('Liebesgrüße aus dem Konstruktor!');
     }
 
+    findAirports(): Observable<string[]> {
+        let url = this.baseUrl + '/airport';
+
+        let headers = new Headers();
+        headers.set('Accept', 'application/json');
+
+        return this
+                .http
+                .get(url, { headers })
+                .map(resp => resp.json());
+
+    }
+
     findById(id: string): Observable<Flight> {
         let url = this.baseUrl + '/flight';
 

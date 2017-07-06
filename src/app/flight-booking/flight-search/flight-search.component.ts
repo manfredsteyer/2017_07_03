@@ -18,6 +18,9 @@ export class FlightSearchComponent implements OnInit {
     to: string;
     flights: Array<Flight> = [];
     selectedFlight: Flight;
+
+    airports: Array<string> = [];
+
     basket: object = {
         "3": true,
         "4": false,
@@ -38,6 +41,11 @@ export class FlightSearchComponent implements OnInit {
     customError: boolean;
 
     ngOnInit() {
+
+        this.flightService.findAirports().subscribe(
+          airports => this.airports = airports,
+          err => console.error(err)
+        );
 
         this.f.valueChanges.subscribe(v => {
 
