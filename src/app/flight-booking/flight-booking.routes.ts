@@ -5,11 +5,13 @@ import { PassengerSearchComponent } from "app/flight-booking/passenger-search/pa
 import { ErrorComponent } from "app/error/error.component";
 import { FlightEditComponent } from "app/flight-booking/flight-edit/flight-edit.component";
 import { FlightBookingComponent } from "app/flight-booking/flight-booking.component";
+import { AuthGuard } from "app/shared/auth/auth.guard";
 
 const FLIGHT_BOOKING_ROUTES: Routes = [
     {
         path: 'flight-booking',
         component: FlightBookingComponent,
+        canActivate: [AuthGuard],
         children: [
           {
               path: 'flight-search',

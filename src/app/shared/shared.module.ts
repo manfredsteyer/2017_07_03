@@ -5,6 +5,7 @@ import { FlightValidationErrorsComponent } from "app/shared/validation/flight-va
 import { CityValidationDirective } from "app/shared/validation/city-validation.directive";
 import { RoundTripValidationDirective } from "app/shared/validation/roundtrip-validation.directive";
 import { AsyncCityValidationDirective } from "app/shared/validation/async-city-validation.directive";
+import { AuthGuard } from "app/shared/auth/auth.guard";
 
 @NgModule({
     imports: [
@@ -17,7 +18,9 @@ import { AsyncCityValidationDirective } from "app/shared/validation/async-city-v
         RoundTripValidationDirective,
         AsyncCityValidationDirective
     ],
-    providers: [],
+    providers: [
+      AuthGuard
+    ],
     exports: [
         CityPipe,
         FlightValidationErrorsComponent,
