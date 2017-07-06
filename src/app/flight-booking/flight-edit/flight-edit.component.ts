@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
+import { Flight } from "app/entities/flight";
 
 @Component({
   selector: 'app-flight-edit',
@@ -12,12 +13,17 @@ export class FlightEditComponent implements OnInit {
 
   id: string;
   showDetails: string;
+  flight: Flight;
 
   ngOnInit() {
     this.route.params.subscribe(p => {
       this.id = p['id'];
       this.showDetails = p['showDetails'];
     });
+
+    this.route.data.subscribe(data => {
+      this.flight = data['flight'];
+    })
   }
 
 }

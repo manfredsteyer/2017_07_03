@@ -6,6 +6,7 @@ import { ErrorComponent } from "app/error/error.component";
 import { FlightEditComponent } from "app/flight-booking/flight-edit/flight-edit.component";
 import { FlightBookingComponent } from "app/flight-booking/flight-booking.component";
 import { AuthGuard } from "app/shared/auth/auth.guard";
+import { FlightEditResolver } from "app/flight-booking/flight-edit/flight-edit.resolver";
 
 const FLIGHT_BOOKING_ROUTES: Routes = [
     {
@@ -23,7 +24,10 @@ const FLIGHT_BOOKING_ROUTES: Routes = [
           },
           {
               path: 'flight-edit/:id',
-              component: FlightEditComponent
+              component: FlightEditComponent,
+              resolve: {
+                flight: FlightEditResolver
+              }
           }
         ]
     }

@@ -8,6 +8,8 @@ import { PassengerSearchComponent } from './passenger-search/passenger-search.co
 import { FlightBookingRouterModule } from "app/flight-booking/flight-booking.routes";
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
 import { FlightBookingComponent } from "app/flight-booking/flight-booking.component";
+import { FlightEditResolver } from "app/flight-booking/flight-edit/flight-edit.resolver";
+import { FlightService } from "app/flight-booking/flight-search/flight.service";
 
 @NgModule({
     imports: [
@@ -23,7 +25,10 @@ import { FlightBookingComponent } from "app/flight-booking/flight-booking.compon
         FlightBookingComponent,
         FlightEditComponent
 ],
-    providers: [],
+    providers: [
+      FlightEditResolver,
+      FlightService
+    ],
     exports: [
         FlightSearchComponent
     ]

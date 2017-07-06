@@ -10,7 +10,7 @@ import { NgForm } from "@angular/forms";
     selector: 'flight-search',
     templateUrl: './flight-search.component.html',
     styleUrls: ['./flight-search.component.css'],
-    providers: [FlightService] 
+    providers: []
 })
 export class FlightSearchComponent implements OnInit {
 
@@ -30,14 +30,14 @@ export class FlightSearchComponent implements OnInit {
     f: NgForm;
 
 
-    constructor(private flightService: FlightService) { 
+    constructor(private flightService: FlightService) {
         // this.http = http;
         console.debug('Liebesgrüße aus dem Konstruktor!');
     }
 
     customError: boolean;
 
-    ngOnInit() { 
+    ngOnInit() {
 
         this.f.valueChanges.subscribe(v => {
 

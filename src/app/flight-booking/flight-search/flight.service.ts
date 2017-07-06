@@ -13,14 +13,45 @@ export class FlightService {
         console.debug('Liebesgrüße aus dem Konstruktor!');
     }
 
+    findById(id: string): Observable<Flight> {
+        let url = this.baseUrl + '/flight';
+
+        let search = new URLSearchParams();
+        search.set('id', id);
+
+        let headers = new Headers();
+        headers.set('Accept', 'application/json');
+
+        return this
+                .http
+                .get(url, { search, headers })
+                .map(resp => resp.json());
+
+    }
+
+    save(flight: Flight): Observable<Flight> {
+        let url = this.baseUrl + '/flight';
+
+        let search = new URLSearchParams();
+
+        let headers = new Headers();
+        headers.set('Accept', 'application/json');
+
+        return this
+                .http
+                .post(url, flight, { search, headers })
+                .map(resp => resp.json());
+
+    }
+
     find(from: string, to: string): Observable<Flight[]> {
-        
+
         let url = this.baseUrl + '/flight';
 
         let search = new URLSearchParams();
         search.set('from', from);
         search.set('to', to);
-        
+
         let headers = new Headers();
         headers.set('Accept', 'application/json');
 
