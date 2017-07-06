@@ -10,7 +10,7 @@ import { FlightEditResolver } from "app/flight-booking/flight-edit/flight-edit.r
 
 const FLIGHT_BOOKING_ROUTES: Routes = [
     {
-        path: 'flight-booking',
+        path: '',
         component: FlightBookingComponent,
         canActivate: [AuthGuard],
         children: [
