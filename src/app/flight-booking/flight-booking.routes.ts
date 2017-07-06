@@ -4,20 +4,28 @@ import { FlightSearchComponent } from "app/flight-booking/flight-search/flight-s
 import { PassengerSearchComponent } from "app/flight-booking/passenger-search/passenger-search.component";
 import { ErrorComponent } from "app/error/error.component";
 import { FlightEditComponent } from "app/flight-booking/flight-edit/flight-edit.component";
+import { FlightBookingComponent } from "app/flight-booking/flight-booking.component";
 
 const FLIGHT_BOOKING_ROUTES: Routes = [
     {
-        path: 'flight-search',
-        component: FlightSearchComponent
-    },
-    {
-        path: 'passenger-search',
-        component: PassengerSearchComponent
-    },
-    {
-        path: 'flight-edit/:id',
-        component: FlightEditComponent
+        path: 'flight-booking',
+        component: FlightBookingComponent,
+        children: [
+          {
+              path: 'flight-search',
+              component: FlightSearchComponent
+          },
+          {
+              path: 'passenger-search',
+              component: PassengerSearchComponent
+          },
+          {
+              path: 'flight-edit/:id',
+              component: FlightEditComponent
+          }
+        ]
     }
+
 ];
 
 export const FlightBookingRouterModule = RouterModule.forChild(FLIGHT_BOOKING_ROUTES);

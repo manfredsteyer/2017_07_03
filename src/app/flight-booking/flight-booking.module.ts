@@ -7,6 +7,7 @@ import { FlightCardComponent } from "app/flight-booking/flight-search/flight-car
 import { PassengerSearchComponent } from './passenger-search/passenger-search.component';
 import { FlightBookingRouterModule } from "app/flight-booking/flight-booking.routes";
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
+import { FlightBookingComponent } from "app/flight-booking/flight-booking.component";
 
 @NgModule({
     imports: [
@@ -18,8 +19,9 @@ import { FlightEditComponent } from './flight-edit/flight-edit.component';
     declarations: [
         FlightSearchComponent,
         FlightCardComponent,
-        PassengerSearchComponent,
-    FlightEditComponent
+        PassengerSearchComponent,
+        FlightBookingComponent,
+        FlightEditComponent
 ],
     providers: [],
     exports: [
