@@ -11,14 +11,19 @@ import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { AppRoutesModule } from "app/app.routes";
 import { BasketComponent } from "app/basket/basket.component";
-
+import { SharedModule } from "app/shared/shared.module";
+import { AuthModule } from "app/auth/auth.module";
+import { OAuthModule } from "angular-oauth2-oidc";
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpModule,
     // FlightBookingModule,
-    AppRoutesModule
+    AppRoutesModule,
+    SharedModule,
+    AuthModule.forRoot(),
+    OAuthModule.forRoot()
   ],
   declarations: [
     AppComponent,

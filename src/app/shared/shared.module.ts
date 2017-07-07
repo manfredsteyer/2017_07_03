@@ -6,6 +6,7 @@ import { CityValidationDirective } from "app/shared/validation/city-validation.d
 import { RoundTripValidationDirective } from "app/shared/validation/roundtrip-validation.directive";
 import { AsyncCityValidationDirective } from "app/shared/validation/async-city-validation.directive";
 import { AuthGuard } from "app/shared/auth/auth.guard";
+import { AuthService } from "app/shared/auth/auth.service";
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import { AuthGuard } from "app/shared/auth/auth.guard";
         AsyncCityValidationDirective
     ],
     providers: [
-      AuthGuard
+      AuthGuard,
+      // AuthService
     ],
     exports: [
         CityPipe,

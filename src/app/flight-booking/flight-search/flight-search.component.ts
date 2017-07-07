@@ -40,12 +40,24 @@ export class FlightSearchComponent implements OnInit {
 
     customError: boolean;
 
+
+
+
+
+
     ngOnInit() {
 
         this.flightService.findAirports().subscribe(
           airports => this.airports = airports,
           err => console.error(err)
         );
+
+
+
+
+
+
+
 
         this.f.valueChanges.subscribe(v => {
 
