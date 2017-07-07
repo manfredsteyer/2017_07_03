@@ -3,6 +3,7 @@ import { Flight } from "app/entities/flight";
 import { Http, URLSearchParams, Headers } from "@angular/http";
 import { FlightService } from "app/flight-booking/flight-search/flight.service";
 import { NgForm } from "@angular/forms";
+import { FlightEventService } from "app/eventing/flight-event-service";
 //               ^^^             ^^^
 //                +---------------+---- Manuell importieren!
 
@@ -38,7 +39,10 @@ export class FlightSearchComponent implements OnInit {
     }
 
 
-    constructor(private flightService: FlightService) {
+    constructor(
+      private flightService: FlightService,
+      private flightEventService: FlightEventService
+      ) {
         // this.http = http;
         console.debug('Liebesgrüße aus dem Konstruktor!');
     }
@@ -88,7 +92,8 @@ export class FlightSearchComponent implements OnInit {
         this.flightService.find(this.from, this.to);
     }
 
-    select(f: Flight): void {
-        this.selectedFlight = f;
+    select(f: Flight, selected: boolean): void {
+        this.basket[f.id] = selected;
+        this.flightEventService.flightSelected.next(f);
     }
 }

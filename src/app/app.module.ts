@@ -14,6 +14,7 @@ import { BasketComponent } from "app/basket/basket.component";
 import { SharedModule } from "app/shared/shared.module";
 import { AuthModule } from "app/auth/auth.module";
 import { OAuthModule } from "angular-oauth2-oidc";
+import { FlightEventService } from "app/eventing/flight-event-service";
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { OAuthModule } from "angular-oauth2-oidc";
     BasketComponent
 ],
   providers: [
+    FlightEventService,
     { provide: BASE_URL, useValue: 'http://www.angular.at/api' }
   ],
   bootstrap: [
