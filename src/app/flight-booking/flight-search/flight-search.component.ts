@@ -14,9 +14,9 @@ import { NgForm } from "@angular/forms";
 })
 export class FlightSearchComponent implements OnInit {
 
-    from: string;
+    from: string = 'Hamburg';
     to: string;
-    flights: Array<Flight> = [];
+
     selectedFlight: Flight;
 
     airports: Array<string> = [];
@@ -31,6 +31,11 @@ export class FlightSearchComponent implements OnInit {
 
     @ViewChild('f')
     f: NgForm;
+
+    // flights: Array<Flight> = [];
+    get flights(): Flight[] {
+      return this.flightService.flights;
+    }
 
 
     constructor(private flightService: FlightService) {
@@ -80,20 +85,7 @@ export class FlightSearchComponent implements OnInit {
         // if (this.f.controls['from'].value == 'Zürich') return;
 
         if (!this.from || !this.to) return;
-
-        console.debug('form', this.f);
-
-        this.flightService
-            .find(this.from, this.to)
-            .subscribe(
-                (flight: Array<Flight>) => {
-                    this.flights = flight;
-                },
-                (errResponse) => {
-                    console.error('Fehler beim Laden', errResponse);
-                }
-            );
-
+        this.flightService.find(this.from, this.to);
     }
 
     select(f: Flight): void {

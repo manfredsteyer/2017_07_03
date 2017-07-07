@@ -8,7 +8,7 @@ import { Flight } from "app/entities/flight";
 
 import 'rxjs';
 
-@Directive({ 
+@Directive({
     selector: 'input[asyncCity]',
     providers: [
         {
@@ -23,10 +23,10 @@ export class AsyncCityValidationDirective implements Validator {
     constructor(private flightService: FlightService) { }
 
     validate(c: AbstractControl): Observable<object> {
-        
+
         return this
                 .flightService
-                .find(c.value, '')
+                .findAndReturn(c.value, '')
                 .map( (flights: Flight[]) => {
                     if (flights.length == 0) return { asyncCity: true }
                     return {};
@@ -50,7 +50,7 @@ export class AsyncCityValidationDirective implements Validator {
         //             sender.complete();
         //         }
         //     }, 400);
-        // });        
+        // });
 
     }
 

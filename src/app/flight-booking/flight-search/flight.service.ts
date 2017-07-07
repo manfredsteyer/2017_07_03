@@ -15,7 +15,7 @@ export class FlightService {
         console.debug('Liebesgrüße aus dem Konstruktor!');
     }
 
-
+    flights: Flight[] = [];
 
 
     findAirports(): Observable<string[]> {
@@ -65,9 +65,42 @@ export class FlightService {
 
     }
 
-    find(from: string, to: string): Observable<Flight[]> {
+    find(from: string, to: string): void {
 
-        let url = this.baseUrl + '/secureflight';
+        // Sichere Variante
+        // let url = this.baseUrl + '/secureflight/byRoute';
+        let url = this.baseUrl + '/flight';
+
+        let search = new URLSearchParams();
+        search.set('from', from);
+        search.set('to', to);
+
+        let headers = new Headers();
+        headers.set('Accept', 'application/json');
+
+        // Bearer token
+        // headers.set('Authorization', this.authSerivce.authorizationHeader);
+
+
+        // Alternative: BASIC-Auth
+        // headers.set('Authorization', 'Basic ' + btoa('max:geheim'));
+
+        let x = this
+              .http
+              .get(url, { search, headers })
+              .map(resp => resp.json())
+              .subscribe(
+                flights => this.flights = flights,
+                err => console.error(err)
+              );
+
+        // TODO: Catch-Block: Reagieren auf 401, 403
+    }
+
+
+    findAndReturn(from: string, to: string) {
+
+        let url = this.baseUrl + '/flight';
 
         let search = new URLSearchParams();
         search.set('from', from);
@@ -82,11 +115,12 @@ export class FlightService {
         // headers.set('Authorization', 'Basic ' + btoa('max:geheim'));
 
         return this
-                .http
-                .get(url, { search, headers })
-                .map(resp => resp.json());
+              .http
+              .get(url, { search, headers })
+              .map(resp => resp.json());
 
         // TODO: Catch-Block: Reagieren auf 401, 403
     }
+
 
 }

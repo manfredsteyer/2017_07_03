@@ -25,7 +25,9 @@
 
             <div *ngIf="!f?.controls['from']?.valid && f?.controls['from']?.dirty">
                 Validierungsfehler
+                <!--
                 <pre>{{ f?.controls['from']?.errors | json }}</pre>
+                -->
             </div>
             <div *ngIf="f?.controls['from']?.hasError('required') && f?.controls['from']?.dirty">Required</div>
             <div *ngIf="f?.controls['from']?.hasError('minlength')">Minlength</div>

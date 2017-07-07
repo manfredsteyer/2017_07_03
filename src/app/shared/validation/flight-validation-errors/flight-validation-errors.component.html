@@ -1,16 +1,18 @@
 
 <div *ngIf="errors && errors.required">
     Pflichtfeld!
-</div>    
+</div>
 
 <div *ngIf="errors && errors.minlength">
     Min. {{ errors.minlength.requiredLength }} Zeichen!
-</div>    
+</div>
 
 <div *ngIf="errors && errors.pattern">
     Ungültige Zeichen erkannt!
-</div>    
+</div>
 
+<!--
 <pre>
     {{errors | json }}
-</pre>    
+</pre>
+-->
